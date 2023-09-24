@@ -24,7 +24,7 @@ html_temp = """
 """
 st.markdown(html_temp, unsafe_allow_html=True)
 
-username = st.text_input("Twitter Username","Type Here")
+username = st.text_input(label="Enter the username of the account you want to check", placeholder="Type here")
 safe_html="""  
     <div style="background-color:#F4D03F;padding:10px >
     <h2 style="color:white;text-align:center;"> This Account is Real</h2>
