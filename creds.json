@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "social-suraksha-sih",
+  "private_key_id": "aa403c52bf775c57ddcb0df237f0e89e8a0cd003",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDVK5HYKVuo9phg\ntNktlKfDgxpmeOigJmGqoGpCnLwcKys0hX+mSV9t2z75eX5vPEQxM1lVe8EYhpnT\n1LrAo0AXaNW7L3+Tsw10oc28MScWIett+aAImJn4q0DbxOL9I6LF4eBrFGkIlMtB\nIQARzi7AIOTDDeUcFO79iuF/res36LZZpkaiqNAiogUBeSW91Vmb2shyWbTiSphC\nwmsjfnNmuVentcHn+9nbdsK4osEkQUlY8LJwQEAOVQybiNXZxS84JgPpBxUmMkbO\ngkr8ydGmsqowU8jP9Sd7f6vd/v6P8VUN/yDRFIGkUCCn8zyVAvScDes4Fo618okY\nDR5W0+sNAgMBAAECggEAI9eL0evgSshNpiL6SjjuvUefqn+lY3oYnVsUCse2NElI\n3i+dHy1Ck6LT05gLO3JHZ/thh6dDeBd3qV+hF+9LATSiDTNnEMNAHa5v/HbKQuUo\no+jfMNrRtrc6tEkGPnhdr8ZzGKYJpAT6qOR+0b+YajsNo8NEFMTrSyutDy4DuPZE\nFFKZwiti1U0tP8yIaP3YdilrmLWVZI8bcM5k4QpTjKv1gqlD6KOps2KZmNnyNuHd\nxHoLvTSlKhj+iKtQwsqlHh5Aj6RnnmLsN8qPalVu0oKKyQSFCk802yU8iXgXz1bJ\nlDKc3hkVW0yxwjH+d8MZPgZpmEYbEzke+e9paDKhcQKBgQDs0GHPshUQYxQD5ZNE\nNzv+gN1KrHQlZfAKF+k+UfyHlrhm4ZgImWqFLyecXylS0+Z5jmlcU1rOKoOAXjEf\nhbRgvCkjGYsDSTTK28m1gCXndXkF+vr4apZtpf+L5b1VK96q+om24gmVed7DyTkL\ndcm48h+9HA640M4I5Meyn+qA0QKBgQDmcM5CCLe8RU0viHRzie1J4+pfAUSVReXT\naCHwffXP7x9yIJTJXkhT40xeQLg1T+rRaM6qWjJgBk2IyS4SAuIkKfVYyIn/RVSL\nP04N5TYcURpLZYdqjm1OVjosuCl4ejR7BRFXE3dELub2UIqKA3crbu3PuZGEoh6K\n/YJK3hv1fQKBgQDkwnd59wE6Dzuqd/7GisS9mSYrmGOqLMqwNWDu/qv/Hq2LVKlU\nxT6M4XxWJeb5SBD/o35L3Yl+VrspKdQyKyqPt7PVYDtVNUZ2H9K+Lchvyp7aFBSU\nHAKscQpmzcsTl4lFiTe3Hqs7Zbq3To54b5QpwFrAh3YBOlONa9MsziXtwQKBgHOS\n3g+GWchGJakSUf1kjqsBcRmHBEOtk8/MqUD5m6BW+Ll/l7/K1pGkLTgUU48Bbu7q\nFsSfiiZY4ugYpk+IPK0QkimeIn/x4K4Z6ObVL6dSEdMAr8MEfdPNMU4ea0YuXEXa\ny9CVRbrfnxyoVmNTy5/v+bu2AUK5IIJrFL7B2NntAoGBAIInFbSYGqDU/TamnyOJ\ndkwCHA/7f8/sW1mwqN4m+qHpLccZd3XK+hRTpFhcguRFatk3Y7Q2tTyGiXluroKB\ntJFda/R8aEDt1Giz7FMlk3fRrG3xHdaZaXy0o38scrf2B2XXehfLHXgtxn+iSAWO\nLgb4X8azjVxFE/rV0kFPkzS5\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-hwsfb@social-suraksha-sih.iam.gserviceaccount.com",
+  "client_id": "112051757176613165513",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-hwsfb%40social-suraksha-sih.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

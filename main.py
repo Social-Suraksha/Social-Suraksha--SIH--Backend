@@ -5,8 +5,19 @@ import streamlit as st
 import pickle
 import numpy as np
 import warnings
+import firebase_admin
+from firebase_admin import credentials
 warnings.filterwarnings("ignore")
 dectree=pickle.load(open('model.pkl','rb'))
+cred = credentials.Certificate("creds.json")
+firebase_admin.initialize_app(cred,
+                              {
+                                  'databaseURL': "https://social-suraksha-sih-default-rtdb.asia-southeast1.firebasedatabase.app/"
+                              })
+
+from firebase_admin import db
+
+ref = db.reference("/")
 
 def pred(features):
     input_data = input_data = np.column_stack(features)
@@ -39,9 +50,12 @@ danger_html="""
 if st.button("Predict"):
     data = data_fetch(username)
     output=pred(data)
+    ref.push({
+	username:
+	{
+		"Real": output,
+	}})
     if output:
         st.markdown(safe_html,unsafe_allow_html=True)
     else:
         st.markdown(danger_html,unsafe_allow_html=True)
-
-# print(pred(dataAPI.data_fetch("al3649")))
