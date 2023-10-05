@@ -6,16 +6,10 @@ import pickle
 import numpy as np
 import warnings
 import firebase_admin
-from firebase_admin import credentials
+import firebase
+from firebase_admin import db
 warnings.filterwarnings("ignore")
 dectree=pickle.load(open('model.pkl','rb'))
-cred = credentials.Certificate("creds.json")
-firebase_admin.initialize_app(cred,
-                              {
-                                  'databaseURL': "https://social-suraksha-sih-default-rtdb.asia-southeast1.firebasedatabase.app/"
-                              })
-
-from firebase_admin import db
 
 ref = db.reference("/")
 
