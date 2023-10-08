@@ -16,5 +16,5 @@ if not firebase_admin._apps:
         "universe_domain": "googleapis.com"})
     firebase_admin.initialize_app(cred,
                               {
-                                  'databaseURL': "https://social-suraksha-sih-default-rtdb.asia-southeast1.firebasedatabase.app/"
+                                  'databaseURL': st.secrets.databaseURL
                               })
