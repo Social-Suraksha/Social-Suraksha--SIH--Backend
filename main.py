@@ -41,13 +41,17 @@ danger_html="""
 """
 
 if st.button("Predict"):
-    data = data_fetch(username)
-    output=pred(data)
-    ref.push({
-	username:
-	{
-		"Real": output,
-	}})
+    stored_rec = ref.get()
+    if username not in stored_rec.values():
+        data = data_fetch(username)
+        output=pred(data)
+        ref.push({
+        username:
+        {
+            "Real": output,
+        }})
+    else:
+        output = stored_rec[username]["Real"]
     if output:
         st.markdown(safe_html,unsafe_allow_html=True)
     else:
