@@ -10,8 +10,6 @@ from firebase_admin import db
 warnings.filterwarnings("ignore")
 dectree=pickle.load(open('model.pkl','rb'))
 
-ref = db.reference("/")
-
 def pred(features):
     input_data = input_data = np.column_stack(features)
     result = dectree.predict(input_data)
@@ -41,17 +39,15 @@ danger_html="""
 """
 
 if st.button("Predict"):
+    ref = db.reference("/")
     stored_rec = ref.get()
-    if username not in stored_rec.values():
+    if username not in stored_rec.keys():
         data = data_fetch(username)
         output=pred(data)
-        ref.push({
-        username:
-        {
-            "Real": output,
-        }})
+        ref = db.reference(f"/{username}")
+        ref.set(output)
     else:
-        output = stored_rec[username]["Real"]
+        output = stored_rec[username]
     if output:
         st.markdown(safe_html,unsafe_allow_html=True)
     else:
