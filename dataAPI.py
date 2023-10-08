@@ -1,10 +1,10 @@
 import tweepy
 import numpy as np
-import os
-consumer_key = os.environ.get('consumer_key')
-consumer_secret = os.environ.get('consumer_secret')
-access_token = os.environ.get('access_token')
-access_token_secret = os.environ.get('access_token_secret')
+import streamlit as st
+consumer_key = st.secrets.consumer_key
+consumer_secret = st.secrets.consumer_secret
+access_token = st.secrets.access_token
+access_token_secret = st.secrets.access_token_secret
 
 auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
 auth.set_access_token(access_token, access_token_secret)
