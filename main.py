@@ -1,4 +1,3 @@
-import env
 import dataAPI
 from dataAPI import data_fetch
 import streamlit as st
