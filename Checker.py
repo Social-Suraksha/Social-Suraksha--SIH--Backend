@@ -37,8 +37,6 @@ danger_html="""
     </div>
 """
 st.markdown(html_temp, unsafe_allow_html=True)
-# st.markdown(safe_html, unsafe_allow_html=True)
-# st.markdown(danger_html, unsafe_allow_html=True)
 
 username = st.text_input(label="Enter the username of the account you want to check", placeholder="Type here")
 
@@ -53,7 +51,8 @@ if st.button("Predict"):
             if output == True :ref.set("Real")
             else : ref.set("Fake")
         else:
-            output = stored_rec[username]
+            if stored_rec[username] == "Fake" : output = False
+            else : output = True
     else:
         data = data_fetch(username)
         output=pred(data)
