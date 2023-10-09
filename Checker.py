@@ -11,7 +11,6 @@ warnings.filterwarnings("ignore")
 dectree=pickle.load(open('model.pkl','rb'))
 
 st.set_page_config(page_title="Fake Account Checker", page_icon="👨‍💻")
-st.sidebar.title("Predictor")
 
 def pred(features):
     input_data = input_data = np.column_stack(features)
