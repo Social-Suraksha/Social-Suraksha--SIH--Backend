@@ -26,19 +26,21 @@ html_temp = """
 <h2 style="color:white;text-align:center;">Check for Fake Twitter Accounts </h2>
 </div>
 """
-st.markdown(html_temp, unsafe_allow_html=True)
-
-username = st.text_input(label="Enter the username of the account you want to check", placeholder="Type here")
 safe_html="""  
-    <div style="background-color:#F4D03F;padding:10px >
-    <h2 style="color:white;text-align:center;"> This Account is Real</h2>
+    <div style="background-color:#00FF00;padding:10px >
+    <h2 style="color:white; text-align:center;"><span style="color: black;"> <b>This Account is Real</b></span></h2>
     </div>
 """
 danger_html="""  
-    <div style="background-color:#F08080;padding:10px >
-    <h2 style="color:black ;text-align:center;"> This Account is Fake</h2>
+    <div style="background-color:#FF0000;padding:10px >
+    <h2 style="color:white ; text-align:center;"><span style="color: black;"> <b>This Account is Fake</b></span></h2>
     </div>
 """
+st.markdown(html_temp, unsafe_allow_html=True)
+# st.markdown(safe_html, unsafe_allow_html=True)
+# st.markdown(danger_html, unsafe_allow_html=True)
+
+username = st.text_input(label="Enter the username of the account you want to check", placeholder="Type here")
 
 if st.button("Predict"):
     ref = db.reference("/")
