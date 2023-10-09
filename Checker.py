@@ -10,6 +10,9 @@ from firebase_admin import db
 warnings.filterwarnings("ignore")
 dectree=pickle.load(open('model.pkl','rb'))
 
+st.set_page_config(page_title="Fake Account Checker", page_icon="👨‍💻")
+st.sidebar.title("Predictor")
+
 def pred(features):
     input_data = input_data = np.column_stack(features)
     result = dectree.predict(input_data)
@@ -41,13 +44,21 @@ danger_html="""
 if st.button("Predict"):
     ref = db.reference("/")
     stored_rec = ref.get()
-    if username not in stored_rec.keys():
+    if stored_rec != None:
+        if username not in stored_rec.keys():
+            data = data_fetch(username)
+            output=pred(data)
+            ref = db.reference(f"/{username}")
+            if output == True :ref.set("Real")
+            else : ref.set("Fake")
+        else:
+            output = stored_rec[username]
+    else:
         data = data_fetch(username)
         output=pred(data)
         ref = db.reference(f"/{username}")
-        ref.set(output)
-    else:
-        output = stored_rec[username]
+        if output == True :ref.set("Real")
+        else : ref.set("Fake")
     if output:
         st.markdown(safe_html,unsafe_allow_html=True)
     else:
