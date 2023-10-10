@@ -58,6 +58,7 @@ if st.button("Predict"):
                 st.markdown("The account you are looking for has been suspended for violating [X Rules](https://support.twitter.com/articles/18311), please check the Username entered.")
                 ref = db.reference(f"/{username}")
                 ref.set("Suspended")
+                output = "Suspended"
                 st.stop()
             output=pred(data)
             ref = db.reference(f"/{username}")
@@ -74,5 +75,7 @@ if st.button("Predict"):
         else : ref.set("Fake")
     if output:
         st.markdown(safe_html,unsafe_allow_html=True)
+    elif output == "Suspended":
+        st.markdown("The account you are looking for has been suspended for violating [X Rules](https://support.twitter.com/articles/18311), please check the Username entered.")
     else:
         st.markdown(danger_html,unsafe_allow_html=True)
