@@ -7,6 +7,7 @@ import warnings
 import firebase_admin
 import firebase
 from firebase_admin import db
+import tweepy
 warnings.filterwarnings("ignore")
 dectree=pickle.load(open('model.pkl','rb'))
 
@@ -41,11 +42,17 @@ st.markdown(html_temp, unsafe_allow_html=True)
 username = st.text_input(label="Enter the username of the account you want to check", placeholder="Type here")
 
 if st.button("Predict"):
+    if username[0] == "@":
+        username = username[1:]
     ref = db.reference("/")
     stored_rec = ref.get()
     if stored_rec != None:
         if username not in stored_rec.keys():
-            data = data_fetch(username)
+            try:
+                data = data_fetch(username)
+            except tweepy.NotFound:
+                st.markdown("The account you are looking for does not exist, please check the Username entered.")
+                st.stop()
             output=pred(data)
             ref = db.reference(f"/{username}")
             if output == True :ref.set("Real")
