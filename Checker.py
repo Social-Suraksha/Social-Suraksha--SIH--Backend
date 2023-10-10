@@ -44,6 +44,7 @@ username = st.text_input(label="Enter the username of the account you want to ch
 if st.button("Predict"):
     if username[0] == "@":
         username = username[1:]
+    username = username.lower()
     ref = db.reference("/")
     stored_rec = ref.get()
     if stored_rec != None:
@@ -52,6 +53,11 @@ if st.button("Predict"):
                 data = data_fetch(username)
             except tweepy.NotFound:
                 st.markdown("The account you are looking for does not exist, please check the Username entered.")
+                st.stop()
+            except tweepy.Forbidden:
+                st.markdown("The account you are looking for has been suspended for violating [X Rules](https://support.twitter.com/articles/18311), please check the Username entered.")
+                ref = db.reference(f"/{username}")
+                ref.set("Suspended")
                 st.stop()
             output=pred(data)
             ref = db.reference(f"/{username}")
