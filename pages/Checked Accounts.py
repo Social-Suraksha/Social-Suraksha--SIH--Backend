@@ -15,7 +15,10 @@ st.markdown(html_temp, unsafe_allow_html=True)
 
 ref = db.reference("/")
 stored_rec = ref.get()
-df = pd.DataFrame.from_dict(stored_rec,orient="index", columns=["Fake/Real"])
-st.table(df)
+try:
+    df = pd.DataFrame.from_dict(stored_rec,orient="index", columns=["Fake/Real"])
+    st.dataframe(df, use_container_width=True)
+except ValueError:
+    st.markdown("No accounts have been checked yet.")
 
 
