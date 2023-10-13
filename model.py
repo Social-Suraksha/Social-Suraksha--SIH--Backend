@@ -21,7 +21,10 @@ df = df.loc[:, df.columns != "protected"]
 df = df.loc[:, df.columns != "verified"]
 df = df.loc[:, df.columns != "profile_image_url_https"]
 df.loc[df['dataset'] == "E13", 'dataset'] = 1
+df.loc[df['dataset'] == "TFP", 'dataset'] = 1
 df.loc[df['dataset'] == "INT", 'dataset'] = 0
+df.loc[df['dataset'] == "TWT", 'dataset'] = 0
+df.loc[df['dataset'] == "FSF", 'dataset'] = 0
 df['description'].fillna(0, inplace=True)
 df.loc[df['description'] != 0, 'description'] = 1
 df.loc[df['default_profile'] != 1, 'default_profile'] = 0
