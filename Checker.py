@@ -8,8 +8,13 @@ import firebase_admin
 import firebase
 from firebase_admin import db
 import tweepy
+import model
 warnings.filterwarnings("ignore")
-dectree=pickle.load(open('model.pkl','rb'))
+try:
+    dectree=pickle.load(open('model.pkl','rb'))
+except FileNotFoundError:
+    model.train_model()
+    dectree=pickle.load(open('model.pkl','rb'))
 
 st.set_page_config(page_title="Fake Account Checker", page_icon="👨‍💻")
 
