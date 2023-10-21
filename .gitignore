@@ -1,3 +1,4 @@
-.streamlit/
+.streamlit/secrets.toml
 __pycache__/
 model.pkl
+SIH_Model.ipynb

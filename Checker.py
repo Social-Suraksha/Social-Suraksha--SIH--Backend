@@ -9,18 +9,25 @@ import firebase
 from firebase_admin import db
 import tweepy
 import model
+from lime import lime_tabular
 warnings.filterwarnings("ignore")
 try:
-    dectree=pickle.load(open('model.pkl','rb'))
+    ranfor=pickle.load(open('model.pkl','rb'))
 except FileNotFoundError:
-    model.train_model()
-    dectree=pickle.load(open('model.pkl','rb'))
+    explainer_lime = model.train_model(gen=True)
+    ranfor=pickle.load(open('model.pkl','rb'))
 
 st.set_page_config(page_title="Fake Account Checker", page_icon="👨‍💻")
 
+def explain(explainer_lime, input_data):
+    exp_lime = explainer_lime.explain_instance(
+    np.array(input_data), ranfor.predict_proba, num_features=9)
+    st.pyplot(exp_lime.as_pyplot_figure())
+    st.components.v1.html(exp_lime.as_html())
+
 def pred(features):
     input_data = input_data = np.column_stack(features)
-    result = dectree.predict(input_data)
+    result = ranfor.predict(input_data)
     if 1 in result:
         return True
     else:
@@ -73,7 +80,9 @@ if st.button("Predict"):
     else : ref.set("Fake")
     if output:
         st.markdown(safe_html,unsafe_allow_html=True)
+        explain(model.train_model(), data)
     elif output == "Suspended":
         st.markdown("The account you are looking for has been suspended for violating [X Rules](https://support.twitter.com/articles/18311), please check the Username entered.")
     else:
         st.markdown(danger_html,unsafe_allow_html=True)
+        explain(model.train_model(), data)

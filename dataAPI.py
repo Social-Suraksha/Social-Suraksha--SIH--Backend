@@ -44,6 +44,6 @@ def data_fetch(twitter_username):
         profile_background_tile = 1
     else:
         profile_background_tile =0
-    final = (statuses_count, followers_count, friends_count, favourites_count,listed_count,default_profile ,profile_sidebar_border_color
-                                ,profile_background_tile,profile_sidebar_fill_color,description)
+    final = [statuses_count, followers_count, friends_count, favourites_count,listed_count,default_profile ,profile_sidebar_border_color
+                                ,profile_background_tile,profile_sidebar_fill_color,description]
     return final
