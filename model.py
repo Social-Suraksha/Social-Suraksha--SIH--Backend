@@ -14,12 +14,7 @@ def train_model(gen = False):
   X = df.loc[:, df.columns != "dataset"]
   y = df["dataset"]
   y=y.astype('int')
-
-  X_train, X_test, y_train, y_test = train_test_split(X,y, test_size = 0.3, random_state=42)
   fetnames = list(X.columns)
-  
-  ranfor = RandomForestClassifier()
-  ranfor = ranfor.fit(X_train, y_train)
   
   # if plot and model:
   #   for tree_idx, estimator in enumerate(ranfor.estimators_):
@@ -36,6 +31,10 @@ def train_model(gen = False):
   #     plt.savefig(f"visualisations/dectree.pdf", dpi = 2400)
   #     plt.close()
   if gen:
+    X_train, X_test, y_train, y_test = train_test_split(X,y, test_size = 0.3, random_state=42)
+    
+    ranfor = RandomForestClassifier()
+    ranfor = ranfor.fit(X_train, y_train)
     pickle.dump(ranfor,open('model.pkl','wb'))
   explainer_lime = lime_tabular.LimeTabularExplainer(X.values,
                                                    feature_names=fetnames,
