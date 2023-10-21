@@ -22,8 +22,8 @@ st.set_page_config(page_title="Fake Account Checker", page_icon="👨‍💻")
 def explain(explainer_lime, input_data):
     exp_lime = explainer_lime.explain_instance(
     np.array(input_data), ranfor.predict_proba, num_features=9)
-    st.pyplot(exp_lime.as_pyplot_figure())
     st.components.v1.html(exp_lime.as_html())
+    st.pyplot(exp_lime.as_pyplot_figure())
 
 def pred(features):
     input_data = input_data = np.column_stack(features)

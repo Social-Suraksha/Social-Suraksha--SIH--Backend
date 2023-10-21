@@ -1,2 +1,4 @@
 [theme]
 base="light"
+backgroundColor="#bbbaba"
+secondaryBackgroundColor="#9e9e9e"
