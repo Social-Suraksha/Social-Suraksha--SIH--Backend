@@ -39,6 +39,7 @@ html_temp = """
 <h2 style="color:white;text-align:center;">Check for Fake Twitter Accounts </h2>
 </div>
 """
+st.markdown("We are facing a technical issue causing profiles to be incorrectly identified as suspended due to changes to the Twitter API, and are working on a solution, please standby.")
 safe_html="""  
     <div style="background-color:#00FF00;padding:10px >
     <h2 style="color:white; text-align:center;"><span style="color: black;"> <b>This Account is Real</b></span></h2>
@@ -68,11 +69,14 @@ if st.button("Predict"):
     except tweepy.NotFound:
         st.markdown("The account you are looking for does not exist, please check the Username entered.")
         st.stop()
-    except tweepy.Forbidden:
+    except tweepy.Forbidden as e:
         st.markdown("The account you are looking for has been suspended for violating [X Rules](https://support.twitter.com/articles/18311), please check the Username entered.")
-        ref = db.reference(f"/{username}")
-        ref.set("Suspended")
+        # ref = db.reference(f"/{username}")
+        # ref.set("Suspended")
         output = "Suspended"
+        st.stop()
+    except tweepy.Unauthorized:
+        st.markdown("We are facing a technical issue, please try again later or submit an issue on the GitHub page")
         st.stop()
     output=pred(data)
     ref = db.reference(f"/{username}")
